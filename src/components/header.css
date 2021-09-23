@@ -1,0 +1,59 @@
+.nav {
+    display:flex;
+    align-items: center;
+    background-color:lightgrey;
+
+}
+
+.logo {
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+    
+
+}
+.logo-img{
+    height: 80px;
+    width: 80px;
+
+}
+.nav-items {
+    display:flex;
+    justify-content:center;
+    width: 100%;
+}
+
+.name{
+    display:flex;
+    justify-content:center;
+    width: 100%;
+    text-decoration: None;
+}
+.menu Link{
+    border: none;
+    text-decoration-color: black;
+}
+.name .menu {
+    font-weight: 400;
+    font-size: 20px;
+    margin-right: 20px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size:40px;;
+    text-decoration: None;
+    text-decoration-style: bold;
+}
+
+.side-menu{
+
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+
+}
+.log-in-bar{
+    padding: 20px;
+    position: relative;
+}
+.log-in{
+    padding-left: 20px;
+}
