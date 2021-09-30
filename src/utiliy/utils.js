@@ -12,7 +12,7 @@ export const validateUser=(user)=>{
         return false;
     }
     return ( 
-        userRecord.username===userName && userPass.password===userPass
+        userRecord.username===userName && userRecord.password===userPass
     )
 }
 

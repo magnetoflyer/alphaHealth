@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react';
+
 
 function Dashboard() {
+    
     return (
         <div>
             <h1>This is my dashboard</h1>

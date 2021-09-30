@@ -1,34 +1,51 @@
 import React, {useState} from 'react';
+import { useHistory  } from 'react-router-dom';
 import "./header.css";
-import {validateUser} from  '../utiliy/utils';
+import {validateUser} from '../utiliy/utils'
 import './login.css';
 
 
 
-function Login() {
-    const [msg, setMsg]=useState("Log In")
-   
+function Login(props) {
+
+    const history =useHistory();
     const [user , setUser]=useState({
         userName:'',
         userPass:''
-    })
+    });// state to store username and password
+    const [msg,setMsg]= useState("please input your credentials")
+
 
 
     const handleChangeUser=(e)=>{
-        console.log(e.target.value);
-        setUser({...user,username:e.target.value})
-    }
+        setUser({...user,userName:e.target.value});
+    }; //to get username from inputfield
 
+    const handleChangePass=(e)=>{   
+        setUser({...user,userPass:e.target.value});
+    };// to get passkey from inputfield
 
-    const handleChangePass=(e)=>{
-        console.log(e.target.value);
-        setUser({...user,userPass:e.target.value})
-    }
-    const handleSubmit=()=>{
+    const makeLog=()=>{
+        props.setLog(true);
+        console.log("logged out succesfully");
+        history.push('./');
+    };// to change the loggin status to true
+
+    const handleSubmit=(event)=>{
+        event.preventDefault();
         if (validateUser(user)){
-            setMsg("Log Out")
+            console.log("user verified successfully");
+            props.setLog(false)
+            history.push("/");     
         }
-    }
+        else
+        {
+        console.log("user not verified");
+        setMsg("Wrong passkey or username!")
+        }
+    };// to verify user from database
+
+    if(props.log){
     return (
         <div className="login">
             <form 
@@ -55,12 +72,22 @@ function Login() {
 
                 <button
                 userName='input-button' 
-                onClick={handleSubmit}>{msg}</button>
+                onClick={handleSubmit}>login</button>
+                <h3>{msg}</h3>
             </form>
            
             
         </div>
     )
+    }
+
+    else{
+        return(
+            <>
+                <button onClick={makeLog}>logout</button>
+            </>
+        )
+    }
 }
 
 export default Login;

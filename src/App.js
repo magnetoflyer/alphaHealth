@@ -9,17 +9,21 @@ import Dashboard from './components/dashboard.js';
 import {SliderData} from './components/homeitems';
 import {BrowserRouter as Router, Switch ,Route} from 'react-router-dom';
 function App() {
+  const [log, setLog]= useState(true)
+
+
+
   return (
     <Router>
     <div className="App">
-      <Header/>
+      <Header log={log} setLog={setLog} />
       <Home slides={SliderData}/>
-      <switch>
-        <Route path="/login.js"exact component={Login} />
-      </switch> 
       <switch>
       <Route path="/Sidebar.js"exact component={Sidebar} />
         </switch>
+      <switch>
+        <Route path="/login.js" exact component={()=><Login log={log} setLog={setLog}/>}/>
+      </switch> 
         <switch>
       <Route path="/dashboard.js"exact component={Dashboard} />
         </switch>

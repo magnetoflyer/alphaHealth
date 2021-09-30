@@ -3,11 +3,17 @@ import "./header.css"
 import {Link} from "react-router-dom"
 
 
-function Header() {
+
+function Header(props) {
+
 
     const [click,setClick]=useState(false);
-
+    console.log(click);
     const handleClick=()=>setClick(!click);
+    const handleLog=()=>{
+        
+        props.setLog(true)
+    }
     const sideBarSrc=click?"cross.svg":"menu.svg";
 
     return (
@@ -24,8 +30,8 @@ function Header() {
                 </div>
             </div>
             <div className="log-in-bar">
-                <div className="log-in">
-                <Link to="/login.js" style={{ textDecoration: 'none' }}>Log In </Link>
+                <div className="log-in" onclick={handleLog}>
+                <Link to="/login.js" style={{ textDecoration: 'none' }}>{props.log?"login":"logout"}</Link>
                 </div>
             </div>
             <div className="side-menu" onClick={handleClick}>
